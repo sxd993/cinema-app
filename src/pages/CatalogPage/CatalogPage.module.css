@@ -1,0 +1,35 @@
+.catalogTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.catalogContainer {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+}
+.searchBar {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    width: 15%;
+}
+.searchBar label {
+    text-align: center;
+}
+.searchBar input {
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+
+.filters {
+    width: 20%;
+    padding-right: 20px;
+}
+.movieGridContainer {
+    width: 80%;
+}

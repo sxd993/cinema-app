@@ -1,0 +1,94 @@
+.movieGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+  padding: 20px;
+}
+
+.movieCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.movieCard:hover {
+  transform: scale(1.05);
+}
+.movieImgContainer {
+  position: relative;
+}
+.movieImgContainer p {
+  padding: 0.9rem;
+  background-color: rgb(255, 173, 49);
+  border-radius: 50px;
+  position: absolute;
+  left: 84%;
+  top: -2%;
+}
+.movieImg {
+  width: 100%;
+  height: auto;
+}
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movieInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  justify-content: center;
+}
+.flexContainer a {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: rgb(235, 67, 15);
+  font-size: 1.5rem;
+}
+
+.movieInfo h3 {
+  margin: 2rem 0;
+  font-weight: 300;
+}
+
+.movieInfo p {
+  margin: 5px 0;
+  color: #666666;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 1.2em;
+  margin: 0 10px;
+}
