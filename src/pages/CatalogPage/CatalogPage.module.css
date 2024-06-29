@@ -33,3 +33,27 @@
 .movieGridContainer {
     width: 80%;
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    gap: 20px;
+}
+.pagination button {
+    padding: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.pagination_current_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 1.5rem;
+    background-color: antiquewhite;
+    border-radius: 32px;
+    overflow: hidden;
+}

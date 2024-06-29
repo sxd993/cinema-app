@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_KEY, API_URL } from '../data/config';
 
-// Thunk to fetch movies list
-export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
-    const response = await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}`);
+export const fetchMovies = createAsyncThunk('movies/fetchMovies', async (page, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const currentPage = state.movies.currentPage;
+    const response = await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}&page=${currentPage}&language=en-US`);
     const data = await response.json();
     return data.results;  // Assuming movie data is in results
 });
@@ -25,6 +26,7 @@ export const fetchGenres = createAsyncThunk('movies/fetchGenres', async () => {
 const movieSlice = createSlice({
     name: 'movies',
     initialState: {
+        currentPage: 2,
         movies: [],
         movieDetails: null,
         genres: [],
@@ -32,7 +34,14 @@ const movieSlice = createSlice({
         detailsStatus: null,  // Separate status for movie details fetching
         genresStatus: null,   // Separate status for genres fetching
     },
-    reducers: {},
+    reducers: {
+        changeCurrentPage(state, action) {
+            const newPage = action.payload;
+            if (newPage > 0) {
+                state.currentPage = newPage;
+            }
+        },
+    },
     extraReducers: (builder) => {
         builder
             // Fetch movies
@@ -71,4 +80,5 @@ const movieSlice = createSlice({
     },
 });
 
+export const { changeCurrentPage } = movieSlice.actions;
 export default movieSlice.reducer;
