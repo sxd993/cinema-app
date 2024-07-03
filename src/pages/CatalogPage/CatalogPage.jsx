@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import classes from './CatalogPage.module.css';
-import { CatalogList } from '../../components/Catalog/CatalogList/CatalogList';
-import { fetchMovies, changeCurrentPage } from '../../slice/moviesSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import classes from "./CatalogPage.module.css";
+import { CatalogList } from "../../components/Catalog/CatalogList/CatalogList";
+import { fetchMovies, changeCurrentPage } from "../../slice/moviesSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -38,14 +38,16 @@ export const CatalogPage = () => {
       </div> */}
       <div className={classes.catalogContainer}>
         <div className={classes.movieGridContainer}>
-          {status === 'loading' ? (
+          {status === "loading" ? (
             <p>Loading...</p>
           ) : (
             <>
               <CatalogList movies={movies} />
               <div className={classes.pagination}>
                 <button onClick={handlePrevPage}>Previous Page</button>
-                <div className={classes.pagination_current_page}><p>{currentPage}</p></div>
+                <div className={classes.pagination_current_page}>
+                  <p>{currentPage}</p>
+                </div>
                 <button onClick={handleNextPage}>Next Page</button>
               </div>
             </>

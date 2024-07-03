@@ -14,10 +14,11 @@
 .header__nav_burger_button {
     display: none;
 }
-
-.header__logo img {
-    width: 250px;
-    height: 150px;
+.header a {
+    text-decoration: none;
+}
+.logo_text {
+    color: red;
 }
 .header__nav a {
     font-size: 1.20rem;
@@ -25,10 +26,11 @@
     padding: 0.6rem 1.20rem;
     border-radius: 1.5rem;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 .header__nav a:hover {
     background-color: #cbd5e1;
+    color: black;
 }
 
 .header__login {
@@ -41,20 +43,10 @@
 
 @media (max-width: 767px) {
     .header {
-        margin: 0;
+        margin: auto;
     }
     .header__nav {
         display: none;
-    }
-    .header__nav_burger_button {
-        display: flex;
-        align-items: center;
-    }
-    .header__logo img { 
-        max-height: 150px;
-        max-width: 150px;
-    }
-    .header__login {
-        font-size: smaller;
+
     }
 }

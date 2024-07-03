@@ -4,7 +4,6 @@ import './index.css';
 import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { HomePage } from './pages/HomePage.jsx';
-import { HeroPage } from './pages/HeroPage.jsx';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage.jsx';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage.jsx';
 import { FilmPage } from './pages/FilmPage/FilmPage.jsx';
@@ -14,8 +13,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<HomePage />} errorElement={<ErrorPage />}>
-        <Route index element={<HeroPage />} />
-        <Route path="catalog" element={<CatalogPage />} />
+        <Route index element={<CatalogPage />} />
       </Route>
       <Route path="/films" element={<HomePage />}>
         <Route path=":id" element={<FilmPage />} />

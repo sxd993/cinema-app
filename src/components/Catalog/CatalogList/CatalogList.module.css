@@ -1,36 +1,40 @@
+a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
 .movieGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 2fr));
   gap: 3rem;
   padding: 20px;
+  color: black;
 }
 
 .movieCard {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
+  justify-content: flex-start;
 }
-
 .movieCard:hover {
   transform: scale(1.05);
 }
 .movieImgContainer {
   position: relative;
 }
-.movieImgContainer p {
+.movieRating {
   padding: 0.9rem;
-  background-color: rgb(255, 173, 49);
+  background-color: rgba(255, 207, 49, 0.902);
   border-radius: 50px;
   position: absolute;
-  left: 84%;
-  top: -2%;
+  top: -3%;
 }
 .movieImg {
-  width: 100%;
+  width: 230px;
   height: auto;
 }
 .flexContainer {
@@ -46,7 +50,7 @@
   padding: 10px;
   text-align: center;
   font-size: 15px;
-  justify-content: center;
+  color: white;
 }
 .flexContainer a {
   margin-top: 1rem;
