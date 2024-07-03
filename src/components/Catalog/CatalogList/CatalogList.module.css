@@ -6,7 +6,7 @@ a {
 }
 .movieGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 2fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 3rem;
   padding: 20px;
   color: black;
@@ -16,6 +16,7 @@ a {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
+  position: relative;
   overflow: hidden;
   transition: transform 0.2s;
   justify-content: flex-start;
@@ -27,9 +28,10 @@ a {
   position: relative;
 }
 .movieRating {
-  padding: 0.9rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
   background-color: rgba(255, 207, 49, 0.902);
-  border-radius: 50px;
+  border-radius: 100%;
   position: absolute;
   top: -3%;
 }
@@ -43,56 +45,26 @@ a {
   align-items: center;
 }
 .movieInfo {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  text-align: center;
-  font-size: 15px;
-  color: white;
-}
-.flexContainer a {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  text-decoration: none;
-  color: rgb(235, 67, 15);
-  font-size: 1.5rem;
-}
-
-.movieInfo h3 {
-  margin: 2rem 0;
-  font-weight: 300;
-}
-
-.movieInfo p {
-  margin: 5px 0;
-  color: #666666;
-}
-
-.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-}
-
-.pagination button {
-  background-color: #007bff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: auto;
+  height: 33%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
-  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+.movieCard:hover .movieInfo {
+  opacity: 1;
 }
 
-.pagination button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.pagination span {
-  font-size: 1.2em;
-  margin: 0 10px;
+.movieInfo h1 {
+  font-size: 1.3rem;
+  font-weight: 400;
 }

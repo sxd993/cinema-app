@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #000000;
+}
+
+.sort_by {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.sort_container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #71e7ac;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sort_container button {
+    font-size: 1rem;
+    padding: 1rem 1rem;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.sort_container button:hover {
+    background-color: #444444;
+    transform: scale(1.05);
+}
+
+.sort_container button.active {
+    background-color: #444444;
+}

@@ -1,0 +1,28 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    gap: 20px;
+}
+.pagination button {
+    padding: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    text-align: center;
+}
+
+.pagination_current_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 1.5rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 32px;
+    overflow: hidden;
+    color: black;
+    text-align: center;
+}
