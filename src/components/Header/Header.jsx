@@ -14,10 +14,6 @@ export const Header = () => {
                     <Link to='/movies'>Movies</Link>
                     <Link to='/tv-series'>TV Series</Link>
                     <Link to='/search'>Search</Link>
-                    {/* ХЗ ОН ДОЛЖЕН КОГДА ТО ЗАРАБОТАТЬ <div className={classes.searchBar}>
-        <label htmlFor="searchFilm"></label>
-        <input type="search" id='searchFilm' placeholder='Search' />
-      </div> */}
                 </nav>
                 <nav className={classes.header__nav_burger_button}>
                     <img src={burgerButton} alt="" width={50} height={50} />

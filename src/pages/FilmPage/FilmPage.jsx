@@ -2,11 +2,16 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieDetails } from "../../slice/moviesSlice";
+import { formatRating } from "../../util/CircularHelper";
+import { UserScoreProgress } from "../../components/UserScoreProgress/UserScoreProgress";
+import { ButtonToWatch } from "../../ui/Button/ButtonToWatch";
 import classes from "./FilmPage.module.css";
 
 export const FilmPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  let userScore = null;
+  let releaseYear = null;
   const movieDetails = useSelector((state) => state.movies.movieDetails);
   const detailsStatus = useSelector((state) => state.movies.detailsStatus);
 
@@ -20,53 +25,54 @@ export const FilmPage = () => {
     }
   }, [dispatch, id]);
 
-  if (detailsStatus === "loading") {
-    return <p className={classes.loading}>Loading...</p>;
+  if (movieDetails) {
+    userScore = formatRating(movieDetails.vote_average);
+    releaseYear = movieDetails?.release_date ? movieDetails.release_date.split("-")[0] : "";
   }
 
-  if (detailsStatus === "failed") {
-    return <p className={classes.failed}>Failed to load movie details.</p>;
-  }
 
-  const releaseYear = movieDetails?.release_date
-    ? movieDetails.release_date.split("-")[0]
-    : "";
-  console.log(movieDetails);
   return (
     <div>
-      {movieDetails ? (
-        <>
-          <div
-            className={classes.filmPoster}
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`,
-            }}
-          >
-            <div className={classes.cardContainer}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-                alt={movieDetails.title}
-                className={classes.cardImage}
-              />
-              <div className={classes.movieDetails}>
-                <div className={classes.movieMainInfo}>
-                  <h1 className={classes.movieTitle}>{movieDetails.title}</h1>
-                  <h1 className={classes.MovieReleaseDate}>{releaseYear}</h1>
-                  <h1 className={classes.MovieOriginCountry}>{movieDetails.origin_country}</h1>
+      {detailsStatus === 'loading' ? (
+        <p>Loading...</p>
+      ) : (
+        movieDetails && (
+          <>
+            <div
+              className={classes.filmPoster}
+              style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`,
+              }}
+            >
+              <div className={classes.cardContainer}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+                  alt={movieDetails.title}
+                  className={classes.cardImage}
+                />
+                <div className={classes.movieDetails}>
+                  <div className={classes.movieMainInfo}>
+                    <h1 className={classes.movieTitle}>{movieDetails.title}</h1>
+                    <h2 className={classes.MovieReleaseDate}>{releaseYear} ({movieDetails.origin_country})</h2>
+                  </div>
+                  <div className={classes.MovieActions}>
+                    <UserScoreProgress userScore={userScore} />
+                    <ButtonToWatch filmId={movieDetails.video} />
+                  </div>
+                  <div className={classes.movieOverview}>
+                    <p>{movieDetails.overview}</p>
+                  </div>
+                  <div>
+                    <p className={classes.moveGenre}>
+                      {getGenreNames(movieDetails.genres || [])}
+                    </p>
+                  </div>
                 </div>
-                <div className="здесь будет кругляшок ">
-                  {movieDetails.vote_average}
-                </div>
-                <p>{movieDetails.overview}</p>
-                <p className={classes.genre}>
-                  {getGenreNames(movieDetails.genres || [])}
-                </p>
               </div>
             </div>
-          </div>
-        </>
-      ) : (
-        <p>No movie details found.</p>
+            {/* <CastGrid cast={''}/> */}
+          </>
+        )
       )}
     </div>
   );

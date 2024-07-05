@@ -59,19 +59,12 @@
   gap: 20px;
 }
 
-.MovieReleaseDate {
-  color: rgba(128, 128, 128, 0.6);
-}
-.MovieOriginCountry {
-  margin-left: auto;
-}
-
 .movieDetails p {
   font-size: 1.1em;
   line-height: 1.6;
 }
 
-.movieDetails p.genre {
+.movieDetails p.movieGenre {
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -82,4 +75,37 @@
   color: #555;
   text-align: center;
   margin-top: 50px;
+}
+
+.CircularProgressLabel p {
+  font-size: 1rem;
+  margin-bottom: 25%;
+}
+
+.movieUserScore {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.movieUserScore h3 {
+  margin-top: 0;
+}
+
+.MovieReleaseDate {
+  color: rgba(129, 129, 129, 0.8) !important;
+}
+
+.MovieActions {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.moveGenre {
+  margin-top: 20px;
+}
+
+.movieOverview {
+  margin-top: 20px;
 }

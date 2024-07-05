@@ -36,8 +36,7 @@ export const MoviesPage = () => {
   return (
     <>
       <div className={classes.catalogTitle}>
-        <h2>Welcome back!</h2>
-        <h3>Checkout the catalog of movies</h3>
+        <h2>Checkout the catalog of movies</h2>
       </div>
       <div className={classes.catalogContainer}>
         <div className={classes.movieGridContainer}>

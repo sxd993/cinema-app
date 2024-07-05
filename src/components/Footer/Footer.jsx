@@ -1,5 +1,3 @@
-import classes from './Footer.module.css'
-
 export const Footer = () => {
     return (
         <footer>
@@ -8,4 +6,4 @@ export const Footer = () => {
     )
 }
 
-export default Footer; 
+export default Footer;

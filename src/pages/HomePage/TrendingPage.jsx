@@ -15,11 +15,8 @@ export const TrendingPage = () => {
 
     useEffect(() => {
         fetchTrending(timeWindow).then(res => {
-            {
-                dispatch(setTrendingMovies(res.results));
-            }
-        }).catch(err => {
-        }); 
+            dispatch(setTrendingMovies(res.results));
+        })
     }, [dispatch, timeWindow]);
     return (
         <>

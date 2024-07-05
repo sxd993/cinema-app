@@ -1,0 +1,10 @@
+.cast_list {
+    display: flex;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.cast_item p {
+    font-size: 1rem;
+    font-weight: bold;
+}

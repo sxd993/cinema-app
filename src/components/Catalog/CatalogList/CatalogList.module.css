@@ -27,14 +27,7 @@ a {
 .movieImgContainer {
   position: relative;
 }
-.movieRating {
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  background-color: rgba(255, 207, 49, 0.902);
-  border-radius: 100%;
-  position: absolute;
-  top: -3%;
-}
+
 .movieImg {
   width: 230px;
   height: auto;
@@ -46,25 +39,57 @@ a {
 }
 .movieInfo {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   position: absolute;
+  gap: 1rem;
   bottom: 0;
   left: 0;
   width: 100%;
   margin: auto;
-  height: 33%;
+  max-height: 50%;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  transition:  opacity 0.4s ease-in-out;
 }
+
+.movieMainInfo {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .movieCard:hover .movieInfo {
   opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .movieInfo h1 {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 400;
+}
+
+.movieMainInfo h1 {
+  margin: 0;
+}
+.movieMainInfo p {
+  font-size: 0.8rem;
+  color: rgba(0, 255, 0, 0.6);
+  margin: 2%;
+  vertical-align: text-top;
+}
+
+.movieRating {
+  max-height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: auto;
 }

@@ -1,0 +1,14 @@
+p {
+    margin: 0;
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 0, 0);
+    padding: 10px;
+    margin: 0 !important;
+    gap: 4px;
+}
