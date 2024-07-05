@@ -46,6 +46,7 @@ export const Pagination = ({ totalPages }) => {
         onBlur={handleBlur}
         min="1"
         max={totalPages}
+        className={classes.input}
       />
       <span> of {totalPages} </span>
       <button onClick={handleNextPage}>Next Page</button>

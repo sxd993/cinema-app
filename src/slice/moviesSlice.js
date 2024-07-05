@@ -15,6 +15,17 @@ export const fetchMovies = createAsyncThunk(
   }
 );
 
+export const fetchMovieDetails = createAsyncThunk(
+  "movies/fetchMovieDetails",
+  async (movieId) => {
+    const response = await fetch(
+      `${API_URL}/movie/${movieId}?api_key=${API_KEY}`
+    );
+    const data = await response.json();
+    return data; // Movie details are in the response
+  }
+);
+
 export const fetchTrailerId = createAsyncThunk(
   "movies/fetchTrailerId",
   async (filmId) => {
@@ -27,7 +38,6 @@ export const fetchTrailerId = createAsyncThunk(
         return null;
       }
     } catch (error) {
-      console.error('Error fetching trailer:', error);
       throw error; // Ретроспективная обработка ошибок
     }
   }
@@ -48,25 +58,6 @@ export const fetchTotalMoviePages = async () => {
   return response.data.total_pages;
 }
 
-export const fetchTotalTVPages = async () => {
-  const response = await axios.get(
-    `${API_URL}/tv/popular?api_key=${API_KEY}`
-  );
-  return response.data;
-}
-
-// Thunk to fetch single movie details
-export const fetchMovieDetails = createAsyncThunk(
-  "movies/fetchMovieDetails",
-  async (movieId) => {
-    const response = await fetch(
-      `${API_URL}/movie/${movieId}?api_key=${API_KEY}`
-    );
-    const data = await response.json();
-    return data; // Movie details are in the response
-  }
-);
-
 const movieSlice = createSlice({
   name: "movies",
   initialState: {
@@ -81,7 +72,6 @@ const movieSlice = createSlice({
     detailsStatus: null,
     genresStatus: null,
     trailerId: null,
-    
   },
   reducers: {
     changeCurrentPage(state, action) {
@@ -116,6 +106,7 @@ const movieSlice = createSlice({
       .addCase(fetchMovies.rejected, (state) => {
         state.status = "failed";
       })
+
       // Fetch movie details
       .addCase(fetchMovieDetails.pending, (state) => {
         state.detailsStatus = "loading";
@@ -127,9 +118,11 @@ const movieSlice = createSlice({
       .addCase(fetchMovieDetails.rejected, (state) => {
         state.detailsStatus = "failed";
       })
+
+      // Fetch trailer ID
       .addCase(fetchTrailerId.fulfilled, (state, action) => {
         state.trailerId = action.payload;
-      })
+      });
   },
 });
 
@@ -138,7 +131,7 @@ export const {
   setTrendingMovies,
   setTotalPages,
   setTimeWindow,
-  setTrailerId, // Добавляем экшен для установки trailerId
+  setTrailerId,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

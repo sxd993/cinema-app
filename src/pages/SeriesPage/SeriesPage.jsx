@@ -1,25 +1,30 @@
 import React, { useEffect } from "react";
-import classes from "../MoviesPage/MoviesPage.module.css";
-import { CatalogList } from "../../components/Catalog/CatalogList/CatalogList";
-import { fetchMovies, changeCurrentPage, setTotalPages, fetchTotalMoviePages } from "../../slice/moviesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import classes from "../MoviesPage/MoviesPage.module.css";
+import { CatalogSerialList } from "../../components/Catalog/CatalogSerialList/CatalogSerialList.jsx";
+import {
+  fetchSerials,
+  changeCurrentPage,
+  setTotalPages,
+  fetchTotalTVPages,
+} from "../../slice/serialSlice.js";
 import { Pagination } from "../../components/Pagination/Pagination.jsx";
 
 export const SeriesPage = () => {
   const dispatch = useDispatch();
-  const movies = useSelector((state) => state.movies.movies);
-  const status = useSelector((state) => state.movies.status);
-  const currentPage = useSelector((state) => state.movies.currentPage);
-  const totalPages = useSelector((state) => state.movies.totalPages);
+  const serials = useSelector((state) => state.serials.serials);
+  const status = useSelector((state) => state.serials.status);
+  const currentPage = useSelector((state) => state.serials.currentPage);
+  const totalPages = useSelector((state) => state.serials.totalPages);
 
   useEffect(() => {
-    dispatch(fetchMovies(currentPage));
+    dispatch(fetchSerials(currentPage));
   }, [dispatch, currentPage]);
 
   useEffect(() => {
-    fetchTotalMoviePages().then(res => {
-      dispatch(setTotalPages(res));
-    })
+    dispatch(fetchTotalTVPages()).then((res) => {
+      dispatch(setTotalPages(res.payload));
+    });
   }, [dispatch]);
 
   const handlePrevPage = () => {
@@ -29,13 +34,13 @@ export const SeriesPage = () => {
   };
 
   const handleNextPage = () => {
-      dispatch(changeCurrentPage(currentPage + 1));
+    dispatch(changeCurrentPage(currentPage + 1));
   };
 
   return (
     <>
       <div className={classes.catalogTitle}>
-        <h2>Checkout the catalog of movies</h2>
+        <h2>Checkout the catalog of series</h2>
       </div>
       <div className={classes.catalogContainer}>
         <div className={classes.movieGridContainer}>
@@ -43,7 +48,7 @@ export const SeriesPage = () => {
             <p>Loading...</p>
           ) : (
             <>
-              <CatalogList movies={movies} />
+              <CatalogSerialList serials={serials} />
               <Pagination
                 handlePrevPage={handlePrevPage}
                 currentPage={currentPage}
