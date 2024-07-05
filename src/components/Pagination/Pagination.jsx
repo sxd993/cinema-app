@@ -25,7 +25,7 @@ export const Pagination = ({ totalPages }) => {
     setInputPage(value);
 
     setTimeout(() => {
-      if (value != undefined && value >= 1 && value <= totalPages) {
+      if (value !== undefined && value >= 1 && value <= totalPages) {
         dispatch(changeCurrentPage(parseInt(value, 10)));
       }
     }, 1000);
