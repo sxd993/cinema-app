@@ -20,27 +20,50 @@ export const FilmPage = () => {
     }
   }, [dispatch, id]);
 
-  
   if (detailsStatus === "loading") {
-    return <p>Loading...</p>;
+    return <p className={classes.loading}>Loading...</p>;
   }
 
   if (detailsStatus === "failed") {
-    return <p>Failed to load movie details.</p>;
+    return <p className={classes.failed}>Failed to load movie details.</p>;
   }
 
+  const releaseYear = movieDetails?.release_date
+    ? movieDetails.release_date.split("-")[0]
+    : "";
+  console.log(movieDetails);
   return (
-    <div className={classes.filmPage}>
+    <div>
       {movieDetails ? (
         <>
-          <h1>{movieDetails.title}</h1>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-            alt={movieDetails.title}
-          />
-          <p>{movieDetails.overview}</p>
-          <h4>{getGenreNames(movieDetails.genres || [])}</h4>
-          <p>Release Date: {movieDetails.release_date}</p>
+          <div
+            className={classes.filmPoster}
+            style={{
+              backgroundImage: `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`,
+            }}
+          >
+            <div className={classes.cardContainer}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+                alt={movieDetails.title}
+                className={classes.cardImage}
+              />
+              <div className={classes.movieDetails}>
+                <div className={classes.movieMainInfo}>
+                  <h1 className={classes.movieTitle}>{movieDetails.title}</h1>
+                  <h1 className={classes.MovieReleaseDate}>{releaseYear}</h1>
+                  <h1 className={classes.MovieOriginCountry}>{movieDetails.origin_country}</h1>
+                </div>
+                <div className="здесь будет кругляшок ">
+                  {movieDetails.vote_average}
+                </div>
+                <p>{movieDetails.overview}</p>
+                <p className={classes.genre}>
+                  {getGenreNames(movieDetails.genres || [])}
+                </p>
+              </div>
+            </div>
+          </div>
         </>
       ) : (
         <p>No movie details found.</p>

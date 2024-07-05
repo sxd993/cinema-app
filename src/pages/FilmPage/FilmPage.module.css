@@ -3,45 +3,77 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #f8f9fa;
-  color: #333;
+  color: #fff;
   font-family: Arial, sans-serif;
 }
 
-.filmPage h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #333;
+.filmPoster {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Fixed height for the poster */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
 }
 
-.filmPage img {
+.filmPoster::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.88));
+  z-index: 1; /* Ensure the overlay is on top of the background */
+}
+
+.cardContainer {
+  position: relative;
+  z-index: 2; /* Ensure the content is on top of the overlay */
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.cardImage {
   width: 300px;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  border-radius: 25px;
+  margin-right: 2rem;
 }
 
-.filmPage p {
+.movieDetails {
+  max-width: 900px;
+}
+
+.movieDetails h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+.movieMainInfo {
+  display: flex;
+  gap: 20px;
+}
+
+.MovieReleaseDate {
+  color: rgba(128, 128, 128, 0.6);
+}
+.MovieOriginCountry {
+  margin-left: auto;
+}
+
+.movieDetails p {
   font-size: 1.1em;
   line-height: 1.6;
-  max-width: 600px;
-  text-align: center;
 }
 
-p:first-of-type {
-  margin-bottom: 10px;
-}
-
-p:nth-of-type(2) {
+.movieDetails p.genre {
   font-weight: bold;
   margin-bottom: 20px;
-}
-
-p:nth-of-type(3),
-p:nth-of-type(4) {
-  font-size: 1em;
-  color: #555;
 }
 
 .loading,
