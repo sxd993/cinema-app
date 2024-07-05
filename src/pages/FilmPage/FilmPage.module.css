@@ -56,16 +56,21 @@
 }
 .movieMainInfo {
   display: flex;
-  gap: 20px;
+  gap: 10px;
+}
+
+.movieMainInfo h2 {
+  margin-top: 0;
+  vertical-align: text-top;
 }
 
 .movieDetails p {
-  font-size: 1.1em;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 
-.movieDetails p.movieGenre {
-  font-weight: bold;
+.movieDetails {
+  font-weight: 300;
   margin-bottom: 20px;
 }
 
@@ -102,10 +107,27 @@
   align-items: flex-start;
 }
 
-.moveGenre {
-  margin-top: 20px;
-}
 
 .movieOverview {
   margin-top: 20px;
+}
+
+.MovieGenreList {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+}
+
+.MovieGenreItem {
+  padding: 4px;
+  background-color: rgba(102, 102, 102, 0.4);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+}
+
+.MovieGenreItem:hover {
+  color: rgb(255, 255, 255);
+  background-color:  rgb(80, 80, 80);
+  cursor: default;
 }

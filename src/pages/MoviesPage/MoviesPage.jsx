@@ -3,7 +3,6 @@ import classes from "./MoviesPage.module.css";
 import { CatalogList } from "../../components/Catalog/CatalogList/CatalogList";
 import { fetchMovies, changeCurrentPage, setTotalPages, fetchTotalMoviePages } from "../../slice/moviesSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Footer from "../../components/Footer/Footer.jsx";
 import { Pagination } from "../../components/Pagination/Pagination.jsx";
 
 export const MoviesPage = () => {
@@ -51,7 +50,6 @@ export const MoviesPage = () => {
                 handleNextPage={handleNextPage}
                 totalPages={totalPages}
               />
-              <Footer />
             </>
           )}
         </div>

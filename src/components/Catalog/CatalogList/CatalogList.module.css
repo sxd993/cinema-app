@@ -59,6 +59,7 @@ a {
   margin-top: auto;
   display: flex;
   flex-direction: column;
+  margin-top: 10%;
 }
 
 
@@ -80,7 +81,7 @@ a {
 }
 .movieMainInfo p {
   font-size: 0.8rem;
-  color: rgba(0, 255, 0, 0.6);
+  color: rgba(0, 255, 0, 1);
   margin: 2%;
   vertical-align: text-top;
 }
@@ -92,4 +93,6 @@ a {
   align-items: center;
   font-size: 1rem;
   margin-bottom: auto;
+  gap: 3px;
+  margin-bottom: 5%;
 }

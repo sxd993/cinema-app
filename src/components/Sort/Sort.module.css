@@ -15,7 +15,7 @@
 .sort_container {
     display: flex;
     align-items: center;
-    border: 1px solid #71e7ac;
+    border: 2px solid #ff0000;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

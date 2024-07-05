@@ -30,7 +30,6 @@ export const FilmPage = () => {
     releaseYear = movieDetails?.release_date ? movieDetails.release_date.split("-")[0] : "";
   }
 
-
   return (
     <div>
       {detailsStatus === 'loading' ? (
@@ -53,19 +52,24 @@ export const FilmPage = () => {
                 <div className={classes.movieDetails}>
                   <div className={classes.movieMainInfo}>
                     <h1 className={classes.movieTitle}>{movieDetails.title}</h1>
-                    <h2 className={classes.MovieReleaseDate}>{releaseYear} ({movieDetails.origin_country})</h2>
+                  </div>
+                  <div className={classes.movieMainInfo}>
+                    <h2 className={classes.MovieReleaseDate}>{movieDetails.runtime} min  / {releaseYear} ({movieDetails.origin_country})</h2>
+                    <h2 ></h2>
                   </div>
                   <div className={classes.MovieActions}>
                     <UserScoreProgress userScore={userScore} />
-                    <ButtonToWatch filmId={movieDetails.video} />
+                    <ButtonToWatch filmId={movieDetails.id} />
                   </div>
                   <div className={classes.movieOverview}>
                     <p>{movieDetails.overview}</p>
                   </div>
                   <div>
-                    <p className={classes.moveGenre}>
-                      {getGenreNames(movieDetails.genres || [])}
-                    </p>
+                    <ul className={classes.MovieGenreList}>
+                      {(getGenreNames(movieDetails.genres || '').split(',').map((genre, index) => (
+                        <li className={classes.MovieGenreItem} key={index}>{genre.trim()}</li>
+                      )))}
+                    </ul>
                   </div>
                 </div>
               </div>
